@@ -5,30 +5,7 @@ return {
   {"nvim-tree/nvim-web-devicons"},
 
   -- LSP
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    dependencies = {
-      {"neovim/nvim-lspconfig"},
-      {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
-        config = function()
-          require("mason").setup()
-        end,
-      },
-      {"williamboman/mason-lspconfig.nvim"},
-      -- Autocompletion
-      {"hrsh7th/nvim-cmp"},
-      {"hrsh7th/cmp-nvim-lsp"},
-      {"L3MON4D3/LuaSnip"},
-      -- Linting and formatting
-      {"jose-elias-alvarez/null-ls.nvim"},
-    },
-    config = function()
-      require("plugins.lsp")
-    end,
-  },
+  require("plugins.lsp"),
 
   -- Colorscheme
   {
