@@ -77,7 +77,7 @@ return {
     cmp.setup({
       mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-;>'] = cmp.mapping.abort(),
+        ['<C-e>'] = cmp.mapping.abort(),
         ['<Tab>'] = cmp.mapping.select_next_item(cmp_select_opts),
         ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select_opts),
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
