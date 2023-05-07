@@ -78,20 +78,10 @@ return {
       mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-;>'] = cmp.mapping.abort(),
-        ['<S-Tab>'] = cmp.mapping(function()
-          if cmp.visible() then
-            cmp.select_prev_item(cmp_select_opts)
-          else
-            cmp.complete()
-          end
-        end),
-        ['<Tab>'] = cmp.mapping(function()
-          if cmp.visible() then
-            cmp.select_next_item(cmp_select_opts)
-          else
-            cmp.complete()
-          end
-        end),
+        ['<Tab>'] = cmp.mapping.select_next_item(cmp_select_opts),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select_opts),
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
       },
       sources = {
         { name = 'path' },
