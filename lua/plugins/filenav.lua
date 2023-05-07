@@ -2,6 +2,7 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local map = vim.keymap
       map.set('n', '<leader>ff', '<cmd> Telescope find_files <CR>')
@@ -9,6 +10,13 @@ return {
       map.set('n', '<leader>fb', '<cmd> Telescope buffers <CR>')
       map.set('n', '<leader>fh', '<cmd> Telescope help_tags <CR>')
       map.set('n', '<leader>fb', '<cmd> Telescope file_browser <CR>')
+
+      local telescopeConfig = require('telescope.config')
+      local vimgrep_arguments =
+        { unpack(telescopeConfig.values.vimgrep_arguments) }
+      table.insert(vimgrep_arguments, '--hidden')
+      table.insert(vimgrep_arguments, '--glob')
+      table.insert(vimgrep_arguments, '!**/.git/*')
 
       local telescope_actions = require('telescope.actions')
       local file_browser_actions =
