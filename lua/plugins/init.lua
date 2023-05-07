@@ -6,7 +6,7 @@ return {
 
   -- LSP
   require("plugins.lsp"),
-
+  
   -- Colorscheme
   {
     "folke/tokyonight.nvim",
