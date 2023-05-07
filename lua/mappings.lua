@@ -5,7 +5,6 @@ vim.g.mapleader = " "
 
 -- Utilities
 map.set("n", ";", ":")
-map.set("n", "<leader>e", "<cmd> Explore <CR>")
 map.set("n", "<Esc>", "<cmd> noh <CR>")
 
 -- Buffers

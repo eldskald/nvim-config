@@ -4,7 +4,8 @@ return {
     tag = "0.1.1",
     config = function()
       local map = vim.keymap
-      map.set("n", "<leader>ff", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+      map.set("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+      map.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>")
       map.set("n", "<leader>fg", "<cmd> Telescope live_grep <CR>")
       map.set("n", "<leader>fb", "<cmd> Telescope buffers <CR>")
       map.set("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")

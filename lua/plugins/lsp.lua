@@ -25,7 +25,13 @@ return {
     {"jose-elias-alvarez/null-ls.nvim"},
   },
   config = function()
-    local lsp = require("lsp-zero").preset({})
+    local lsp = require("lsp-zero").preset({
+      name = "minimal",
+      manage_nvim_cmp = {
+        set_basic_mappings = false,
+        set_extra_mappings = false,
+      },
+    })
 
     lsp.on_attach(function(_, bufnr)
       local opts = { buffer = bufnr }
@@ -48,20 +54,39 @@ return {
       end, opts)
     end)
 
+    lsp.set_sign_icons({
+      error = "X",
+      warn = "!",
+      hint = "?",
+      info = "i",
+    })
+
     require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
     lsp.setup()
 
     -- Autocompletion
     local cmp = require("cmp")
+    local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
     cmp.setup({
       mapping = {
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-;>"] = cmp.mapping.close(),
-        ["<Up>"] = nil,
-        ["<Down>"] = nil,
+        ["<C-;>"] = cmp.mapping.abort(),
+        ["<S-Tab>"] = cmp.mapping(function()
+          if cmp.visible() then
+            cmp.select_prev_item(cmp_select_opts)
+          else
+            cmp.complete()
+          end
+        end),
+        ["<Tab>"] = cmp.mapping(function()
+          if cmp.visible() then
+            cmp.select_next_item(cmp_select_opts)
+          else
+            cmp.complete()
+          end
+        end),
       },
       sources = {
         { name = "path" },
