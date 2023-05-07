@@ -1,8 +1,8 @@
 local o = vim.opt
 
 -- Utils
-o.mouse = ""
-o.clipboard = "unnamedplus"
+o.mouse = ''
+o.clipboard = 'unnamedplus'
 o.termguicolors = true
 
 -- Indenting
@@ -15,4 +15,3 @@ o.smartindent = true
 -- Line numbers
 o.number = true
 o.relativenumber = true
-
