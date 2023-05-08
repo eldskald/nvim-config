@@ -23,6 +23,11 @@ return {
     { 'rafamadriz/friendly-snippets' },
     -- Linting and formatting
     { 'jose-elias-alvarez/null-ls.nvim' },
+    -- Diagnostics and quickfix
+    {
+      'folke/trouble.nvim',
+      requires = 'nvim-tree/nvim-web-devicons',
+    },
   },
   config = function()
     local lsp = require('lsp-zero').preset({
@@ -104,6 +109,45 @@ return {
         b.formatting.prettier,
         b.formatting.stylua,
       },
+    })
+
+    -- Diagnostics
+    vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>')
+    vim.keymap.set(
+      'n',
+      '<leader>xw',
+      '<cmd>TroubleToggle workspace_diagnostics<cr>'
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>xd',
+      '<cmd>TroubleToggle document_diagnostics<cr>'
+    )
+    vim.keymap.set('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>')
+    vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>')
+    vim.keymap.set('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
+
+    require('trouble').setup({
+      action_keys = {
+        close = 'q',
+        cancel = '<Esc>',
+        refresh = 'r',
+        jump = { '<CR>', '<Tab>' },
+        open_split = { '<C-x>' },
+        open_vsplit = { '<C-v>' },
+        open_tab = { '<C-t>' },
+        jump_close = { 'o' },
+        toggle_mode = 'm',
+        toggle_preview = 'P',
+        hover = 'K',
+        preview = 'p',
+        close_folds = { 'zM', 'zm' },
+        open_folds = { 'zR', 'zr' },
+        toggle_fold = { 'zA', 'za' },
+        previous = 'k',
+        next = 'j',
+      },
+      use_diagnostic_signs = true,
     })
   end,
 }

@@ -15,3 +15,8 @@ o.smartindent = true
 -- Line numbers
 o.number = true
 o.relativenumber = true
+
+-- Splits
+o.splitbelow = true
+o.splitright = true
+

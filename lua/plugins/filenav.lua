@@ -7,6 +7,7 @@ return {
       local map = vim.keymap
       map.set('n', '<leader>ff', '<cmd> Telescope find_files <CR>')
       map.set('n', '<leader>fg', '<cmd> Telescope live_grep <CR>')
+      map.set('n', '<leader>fr', '<cmd> Telescope oldfiles <CR>')
       map.set('n', '<leader>fb', '<cmd> Telescope buffers <CR>')
       map.set('n', '<leader>fh', '<cmd> Telescope help_tags <CR>')
       map.set('n', '<leader>fb', '<cmd> Telescope file_browser <CR>')
