@@ -19,4 +19,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: 0.17.1
           args: --check .
+      
+      - name: Lint
+        uses: judaew/luacheck-action@v0.2.1
+        with:
+          targets: "."
 

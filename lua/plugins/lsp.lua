@@ -24,10 +24,7 @@ return {
     -- Linting and formatting
     { 'jose-elias-alvarez/null-ls.nvim' },
     -- Diagnostics and quickfix
-    {
-      'folke/trouble.nvim',
-      requires = 'nvim-tree/nvim-web-devicons',
-    },
+    { 'folke/trouble.nvim' },
   },
   config = function()
     local lsp = require('lsp-zero').preset({
