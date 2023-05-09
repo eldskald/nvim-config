@@ -1,4 +1,4 @@
-name: "Formatting"
+name: "CI"
 
 on:
   pull_request:
@@ -19,3 +19,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: 0.17.1
           args: --check .
+
