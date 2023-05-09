@@ -19,4 +19,3 @@ o.relativenumber = true
 -- Splits
 o.splitbelow = true
 o.splitright = true
-

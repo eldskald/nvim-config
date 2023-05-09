@@ -27,4 +27,3 @@ map.set('n', '<C-=>', '<cmd> resize +1 <CR>')
 map.set('n', '<C-->', '<cmd> resize -1 <CR>')
 map.set('n', '<A-=>', '<cmd> vertical resize +1 <CR>')
 map.set('n', '<A-->', '<cmd> vertical resize -1 <CR>')
-
