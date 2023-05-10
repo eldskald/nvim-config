@@ -144,7 +144,16 @@ return {
         previous = 'k',
         next = 'j',
       },
-      use_diagnostic_signs = true,
+      use_diagnostic_signs = false,
+      icons = false,
+      fold_open = 'v',
+      fold_closed = '>',
+      signs = {
+        error = 'X',
+        warning = '!',
+        hint = '?',
+        information = 'i',
+      },
     })
   end,
 }
