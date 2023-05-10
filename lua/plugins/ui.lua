@@ -29,7 +29,7 @@ return {
         local alpha = require('alpha')
         local dashboard = require('alpha.themes.dashboard')
         local v = vim.version()
-        dashboard.section.header.val = {
+        local dashboard_art = {
           [[                                                   ]],
           [[                                              ___  ]],
           [[                                           ,o88888 ]],
@@ -53,8 +53,14 @@ return {
           [[  .. . ."'                                         ]],
           [[ .                                                 ]],
           [[                                                   ]],
-          '         NEOVIM ' .. v.major .. '.' .. v.minor .. '.' .. v.patch,
         }
+        local nvim_version = v.major .. '.' .. v.minor .. '.' .. v.patch
+        local spaces_total = (string.len(dashboard_art[1]) - 13) / 2
+        local nvim_centralized = string.rep(' ', spaces_total)
+          .. 'NEOVIM v'
+          .. nvim_version
+        table.insert(dashboard_art, nvim_centralized)
+        dashboard.section.header.val = dashboard_art
         dashboard.section.buttons.val = {
           dashboard.button('e', 'New file', ':ene <BAR> startinsert <CR>'),
           dashboard.button('f', 'Find file', ':Telescope find_files <CR>'),
