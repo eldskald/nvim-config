@@ -102,6 +102,7 @@ return {
       sources = {
         -- Linters
         b.diagnostics.eslint,
+        b.diagnostics.luacheck,
         -- Formatters
         b.formatting.prettier,
         b.formatting.stylua,
