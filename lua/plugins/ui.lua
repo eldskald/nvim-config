@@ -117,17 +117,14 @@ return {
           },
         },
         sections = {
-          -- these are to remove the defaults
           lualine_a = {},
           lualine_b = {},
           lualine_y = {},
           lualine_z = {},
-          -- These will be filled later
           lualine_c = {},
           lualine_x = {},
         },
         inactive_sections = {
-          -- these are to remove the defaults
           lualine_a = {},
           lualine_b = {},
           lualine_y = {},
@@ -137,12 +134,10 @@ return {
         },
       }
 
-      -- Inserts a component in lualine_c at left section
       local function ins_left(component)
         table.insert(config.sections.lualine_c, component)
       end
 
-      -- Inserts a component in lualine_x at right section
       local function ins_right(component)
         table.insert(config.sections.lualine_x, component)
       end
@@ -151,8 +146,8 @@ return {
         function()
           return '▊'
         end,
-        color = { fg = colors.blue }, -- Sets highlighting of component
-        padding = { left = 0, right = 1 }, -- We don't need space before this
+        color = { fg = colors.cyan },
+        padding = { left = 0, right = 1 },
       })
 
       ins_left({
@@ -165,24 +160,24 @@ return {
         function()
           return '|'
         end,
+        cond = conditions.buffer_not_empty,
       })
 
       ins_left({
         'filename',
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.orange, gui = 'bold' },
+        color = { gui = 'bold' },
       })
 
       ins_left({
         function()
-          return '|'
+          return ' '
         end,
-        cond = conditions.buffer_not_empty,
       })
 
       ins_left({
         'diff',
-        symbols = { added = '+ ', modified = 'M ', removed = '- ' },
+        symbols = { added = ' +', modified = ' ~', removed = ' -' },
         diff_color = {
           added = { fg = colors.green },
           modified = { fg = colors.orange },
@@ -192,28 +187,26 @@ return {
       })
 
       ins_left({
-        'diagnostics',
-        sources = { 'nvim_diagnostic' },
-        symbols = { error = 'X ', warn = '! ', info = 'i ' },
-        diagnostics_color = {
-          color_error = { fg = colors.red },
-          color_warn = { fg = colors.yellow },
-          color_info = { fg = colors.cyan },
-        },
+        function()
+          return ' '
+        end,
       })
 
-      -- Insert mid section. You can make any number of sections in neovim :)
-      -- for lualine it's any number greater then 2
+      ins_left({
+        'diagnostics',
+        sources = { 'nvim_diagnostic' },
+        symbols = { error = ' X ', warn = ' ! ', hint = ' ? ', info = ' i ' },
+      })
+
       ins_left({
         function()
           return '%='
         end,
       })
 
-      -- Add components to right sections
       ins_right({
         'filetype',
-        icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+        icons_enabled = false,
         color = { fg = colors.green, gui = 'bold' },
       })
 
@@ -237,11 +230,10 @@ return {
         function()
           return '▊'
         end,
-        color = { fg = colors.blue },
+        color = { fg = colors.cyan },
         padding = { left = 1 },
       })
 
-      -- Now don't forget to initialize lualine
       lualine.setup(config)
     end,
   },
