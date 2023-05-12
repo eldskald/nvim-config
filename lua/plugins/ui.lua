@@ -14,10 +14,15 @@ return {
     config = function()
       require('bufferline').setup({
         options = {
-          indicator = { style = 'underline' },
-          buffer_close_icon = '',
-          close_icon = '',
+          indicator = {
+            icon = '>',
+            style = 'icon',
+          },
+          separator_style = { '|', '|' },
           modified_icon = '*',
+          show_buffer_icons = false,
+          show_buffer_close_icons = false,
+          show_close_icon = false,
         },
       })
     end,
