@@ -24,5 +24,6 @@
   "telescope.nvim": { "branch": "master", "commit": "c1a2af0af69e80e14e6b226d3957a064cd080805" },
   "tokyonight.nvim": { "branch": "main", "commit": "df13e3268a44f142999fa166572fe95a650a0b37" },
   "trouble.nvim": { "branch": "main", "commit": "d56bfc0c501ced4002a57cb60433362fb2ce9c4d" },
-  "vim-floaterm": { "branch": "master", "commit": "59c1fd5b0097014bdd107121612a30c556b67de0" }
+  "vim-floaterm": { "branch": "master", "commit": "59c1fd5b0097014bdd107121612a30c556b67de0" },
+  "vim-godot": { "branch": "master", "commit": "c8555af61c6ddf7ecfcd4e4c25a217cbf93b82fa" }
 }
