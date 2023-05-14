@@ -66,11 +66,7 @@ return {
           .. nvim_version
         table.insert(dashboard_art, nvim_centralized)
         dashboard.section.header.val = dashboard_art
-        dashboard.section.buttons.val = {
-          dashboard.button('e', 'New file', ':ene <BAR> startinsert <CR>'),
-          dashboard.button('f', 'Find file', ':Telescope find_files <CR>'),
-          dashboard.button('q', 'Quit NVIM', ':qa<CR>'),
-        }
+        dashboard.section.buttons.val = {}
         alpha.setup(dashboard.config)
       end,
     },

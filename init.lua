@@ -29,7 +29,7 @@ require('lazy').setup('plugins', {
       plugin = '♦',
       runtime = '»',
       source = '</>',
-      start = '▷',
+      start = '',
       task = '✓',
       list = {
         '•',
