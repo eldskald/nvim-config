@@ -10,15 +10,43 @@ You need [neovim](https://github.com/neovim/neovim) v0.9.0 first. Then, you need
 git clone https://github.com/eldskald/nvim-config.git ~/.config/nvim
 ```
 
+## Setting up neovim with Godot
+
+### Setting up neovim to listen to Godot's LSP
+
+The LSP is always running while the editor is running, so you can only edit code with the LSP with Godot open. Go to Editor > Editor Settings > Network. There you can see the port the LSP is running on. If you're using these configs as is, you don't need to do anything anymore, but if you want to make your own configs to listen to Godot LSP, add the following code after you setup nvim-lspconfig and cmp_nvim_lsp:
+
+```
+local cmp = require('cmp_nvim_lsp')
+local lspprot = vim.lsp.protocol
+require('lspconfig').gdscript.setup({
+  capabilities = cmp.default_capabilities(lspprot.make_client_capabilities()),
+})
+```
+
+I put these on after/ftplugin/gdscript.lua, since I only want these to run if I'm editing gdscript files.
+
+### Using neovim as an external code editor for Godot
+
+You can have it so whenever you double click a script in Godot, it opens it in neovim instead of Godot's built in code editor.
+
+First, you need to open neovim with a setup server. To do so, run the following:
+
+```
+nvim --listen <your server path>
+```
+
+The path can be anywhere, it's temporary. I set it on `~/.cache/nvim/server`.
+
+Now, open up Godot, go to Editor > Editor Settings > Text Editor > External, tick Use External Editor, put `nvim` on Exec Path and `--server <your server path> --remote-silent {file}` on Exec Flags. You can't put `~` there, you must put the whole path. Now, whenever you have a neovim instance with that server, when you double click a .gd file it will open on that instance on a new tab.
+
+If you try to open it without a neovim instance with that server, it'll make a swap file on `~/.local/state/nvim/swap/` to warn you some other neovim instance might be editing that file, so the next time you try to open that file it will complain about that swap file. Just delete that file if you want it to stop complaining.
+
 ## Recommendations
-
-### neovim-remote
-
-You need [neovim-remote](https://github.com/mhinz/neovim-remote) to use neovim as a default code editor for Godot. To do so, go to Godot, Editor > Editor Settings > Text Editor > External, tick Use External Editor, put `nvr` on Exec Path and `-s --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>" --nostart` on Exec Flags. Now, if you have a terminal running an instance of neovim listening to nvr's default socket, just open neovim with nvr if you're in doubt. I have an alias setting nvim and vim to `nvr -l -s`, so that everytime I call either vim or nvim at any file, it will open that file on the already running instance I have with neovim or open an instance listening to the right socket so that it's correctly setup. Use nvr, it's amazing for creating integrated development environments for everything, you can execute commands from a different terminal on you current running neovim instance, open files on buffers, it's really good not only for Godot but for all projects. Read more at [their repository](https://github.com/mhinz/neovim-remote).
 
 ### ripgrep
 
-You already have it installed for telescope to work, so just use it on your workflow. It greps your system for anything you want to find. For example:
+You already have it installed for telescope to work, so just use it on your workflow. It greps your system for anything you want to find, that's pretty much telescope on your whole system, even outside neovim. For example:
 
 ```
 cd ~/.config/nvim/
@@ -32,4 +60,22 @@ rg -F "require('lspconfig')" -g "*.md"
 ```
 
 This searches for occurrences of `require('lspconfig')` on files that match the `*.md` glob, recursively on the current directory. It also supports config files so you can remove some of the filter it automatically applies, such as hidden files. Read more at [their documentation](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md).
+
+### nvim --remote
+
+Even if you don't use Godot, I recommend learning the neovim remote commands. Whenever you have an instance of neovim listening to a server, you can do stuff to that instance from other terminals, applications, you name it. For example, if you run
+
+```
+nvim --server <server path> --remote-silent <file path>
+```
+
+you will open that file on a new tab on that neovim instance. You can send key presses too.
+
+```
+nvim --server <server path> --remote-send ":echo 'running this command remotely'<CR>"
+```
+
+This will cause all these keys to be typed, so from normal mode you would echo `running this command remotely` and from insert mode you would insert `:echo 'running this command remotely'` and then a line break.
+
+You can use it to automate stuff or to use neovim as external editor for other software other than Godot. Read more [here](https://neovim.io/doc/user/remote.html).
 
