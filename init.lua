@@ -26,7 +26,7 @@ require('lazy').setup('plugins', {
       lazy = 'zzz',
       loaded = '+',
       not_loaded = '-',
-      plugin = '♦',
+      plugin = '',
       runtime = '»',
       source = '</>',
       start = '',
