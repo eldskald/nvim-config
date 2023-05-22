@@ -4,11 +4,15 @@ This is just a repository with my neovim configuration to make my life easier wh
 
 # Installation
 
-You need [neovim](https://github.com/neovim/neovim) v0.9.0 first. Then, you need [ripgrep](https://github.com/BurntSushi/ripgrep) for telescope to work. Lastly, just clone this repository at ~/.config/nvim :
+You need [neovim](https://github.com/neovim/neovim) v0.9.0 first. Lastly, just clone this repository at ~/.config/nvim :
 
 ```
 git clone https://github.com/eldskald/nvim-config.git ~/.config/nvim
 ```
+
+## Dependencies
+
+You need [ripgrep](https://github.com/BurntSushi/ripgrep) for telescope to work. You would also need [nnn](https://github.com/jarun/nnn) and [tmux](https://github.com/tmux/tmux) for the file tree with the previews to work, but you would need to setup the previews on nnn yourself, with the plugins. Follow [these](https://github.com/jarun/nnn/tree/master/plugins#installation) instructions to do this.
 
 # Setting up neovim with Godot
 
@@ -43,41 +47,4 @@ The path can be anywhere, it's temporary. I set it on `~/.cache/nvim/server`.
 Now, open up Godot, go to Editor > Editor Settings > Text Editor > External, tick Use External Editor, put `nvim` on Exec Path and `--server <your server path> --remote-silent {file}` on Exec Flags. You can't put `~` there, you must put the whole path. Now, whenever you have a neovim instance with that server, when you double click a .gd file it will open on that instance on a new tab.
 
 If you try to open it without a neovim instance with that server, it'll make a swap file on `~/.local/state/nvim/swap/` to warn you some other neovim instance might be editing that file, so the next time you try to open that file it will complain about that swap file. Just delete that file if you want it to stop complaining.
-
-# Recommendations
-
-## ripgrep
-
-You already have it installed for telescope to work, so just use it on your workflow. It greps your system for anything you want to find, that's pretty much telescope on your whole system, even outside neovim. For example:
-
-```
-cd ~/.config/nvim/
-rg -F "require('lspconfig')"
-```
-
-This will print all files that include `require('lspconfig')` on your nvim config files and the lines with it. This is really useful for refactoring. It only searches recursively on the folder you call it at, and it will ignore everthing under .git, .gitignore, hidden files and among other things. You can add more filters, for example:
-
-```
-rg -F "require('lspconfig')" -g "*.md"
-```
-
-This searches for occurrences of `require('lspconfig')` on files that match the `*.md` glob, recursively on the current directory. It also supports config files so you can remove some of the filter it automatically applies, such as hidden files. Read more at [their documentation](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md).
-
-## nvim --remote
-
-Even if you don't use Godot, I recommend learning the neovim remote commands. Whenever you have an instance of neovim listening to a server, you can do stuff to that instance from other terminals, applications, you name it. For example, if you run
-
-```
-nvim --server <server path> --remote-silent <file path>
-```
-
-you will open that file on a new tab on that neovim instance. You can send key presses too.
-
-```
-nvim --server <server path> --remote-send ":echo 'running this command remotely'<CR>"
-```
-
-This will cause all these keys to be typed, so from normal mode you would echo `running this command remotely` and from insert mode you would insert `:echo 'running this command remotely'` and then a line break.
-
-You can use it to automate stuff or to use neovim as external editor for other software other than Godot. Read more [here](https://neovim.io/doc/user/remote.html).
 
