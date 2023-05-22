@@ -8,12 +8,6 @@ map.set('n', ';', ':')
 map.set('n', 'U', '<C-r>')
 map.set('n', '<Esc>', '<cmd> noh <CR>')
 
--- Navigation
-map.set('i', '<C-h>', '<Left>')
-map.set('i', '<C-j>', '<Down>')
-map.set('i', '<C-k>', '<Up>')
-map.set('i', '<C-l>', '<Right>')
-
 -- Buffers
 map.set('n', '<Tab>', '<cmd> bn <CR>')
 map.set('n', '<S-Tab>', '<cmd> bp <CR>')
