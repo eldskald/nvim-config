@@ -7,6 +7,8 @@ vim.g.mapleader = ' '
 map.set('n', ';', ':')
 map.set('n', 'U', '<C-r>')
 map.set('n', '<Esc>', '<cmd> noh <CR>')
+map.set('i', '<A-j>', '<Esc> ddpi')
+map.set('i', '<A-k>', '<Esc> ddkkpi')
 
 -- Buffers
 map.set('n', '<Tab>', '<cmd> bn <CR>')
