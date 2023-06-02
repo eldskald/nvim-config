@@ -1,6 +1,7 @@
 return {
   'voldikss/vim-floaterm',
   config = function()
+    vim.api.nvim_set_hl(0, 'FloatermBorder', { bg = 'none' })
     local map = vim.keymap
     map.set('n', '<leader>t', '<cmd> FloatermToggle <CR>')
     map.set('t', '<Esc>', '<C-\\><C-n>:FloatermToggle <CR>')
