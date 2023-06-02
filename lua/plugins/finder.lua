@@ -11,13 +11,6 @@ return {
       map.set('n', '<leader>fb', '<cmd> Telescope buffers <CR>')
       map.set('n', '<leader>fh', '<cmd> Telescope help_tags <CR>')
 
-      local telescopeConfig = require('telescope.config')
-      local vimgrep_arguments =
-        { unpack(telescopeConfig.values.vimgrep_arguments) }
-      table.insert(vimgrep_arguments, '--hidden')
-      table.insert(vimgrep_arguments, '--glob')
-      table.insert(vimgrep_arguments, '!**/.git/*')
-
       local telescope_actions = require('telescope.actions')
       require('telescope').setup({
         pickers = {
@@ -25,9 +18,12 @@ return {
             find_command = {
               'rg',
               '--files',
+              '--no-ignore-vcs',
               '--hidden',
               '--glob',
-              '!**/.git/*',
+              '!.git/**',
+              '--glob',
+              '!node_modules/**',
             },
           },
         },
