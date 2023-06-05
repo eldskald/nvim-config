@@ -8,3 +8,9 @@ local lspprot = vim.lsp.protocol
 require('lspconfig').gdscript.setup({
   capabilities = cmp.default_capabilities(lspprot.make_client_capabilities()),
 })
+require('cmp').setup({
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+  },
+})

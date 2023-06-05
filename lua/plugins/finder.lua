@@ -24,6 +24,8 @@ return {
               '!.git/**',
               '--glob',
               '!node_modules/**',
+              '--glob',
+              '!.godot/**',
             },
           },
         },
