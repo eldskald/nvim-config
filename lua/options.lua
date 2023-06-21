@@ -4,6 +4,7 @@ local o = vim.opt
 o.mouse = ''
 o.clipboard = 'unnamedplus'
 o.termguicolors = true
+o.guicursor = 'a:blinkon500,i:ver100'
 
 -- Indenting
 o.tabstop = 2
