@@ -21,7 +21,5 @@ jobs:
           args: --check .
       
       - name: Lint
-        uses: judaew/luacheck-action@v0.2.1
-        with:
-          targets: "."
+        uses: judaew/luacheck-action@v0.2.2
 
