@@ -75,7 +75,26 @@ return {
             info = 'i',
         })
 
-        require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+        -- Configs for lua
+        require('lspconfig').lua_ls.setup({
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = 'LuaJIT',
+                    },
+                    diagnostics = {
+                        enable = false, -- use luacheck only
+                    },
+                    workspace = {
+                        library = vim.api.nvim_get_runtime_file('', true),
+                        checkThirdParty = false,
+                    },
+                    telemetry = {
+                        enable = false,
+                    },
+                },
+            },
+        })
 
         lsp.setup()
 
