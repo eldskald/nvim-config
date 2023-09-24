@@ -133,6 +133,7 @@ return {
                 -- Formatters
                 b.formatting.prettier,
                 b.formatting.stylua,
+                b.formatting.clang_format,
             },
         })
 
