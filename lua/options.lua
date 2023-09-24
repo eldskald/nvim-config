@@ -7,9 +7,9 @@ o.termguicolors = true
 o.guicursor = 'a:blinkon500,i:ver100'
 
 -- Indenting
-o.tabstop = 2
-o.softtabstop = 2
-o.shiftwidth = 2
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
 o.expandtab = true
 o.smartindent = true
 
