@@ -14,6 +14,14 @@ git clone https://github.com/eldskald/nvim-config.git ~/.config/nvim
 
 You need [ripgrep](https://github.com/BurntSushi/ripgrep) for telescope to work. You would also need [nnn](https://github.com/jarun/nnn) and [tmux](https://github.com/tmux/tmux) for the file tree with the previews to work, but you would need to setup the previews on nnn yourself, with the plugins. Follow [these](https://github.com/jarun/nnn/tree/master/plugins#installation) instructions to do this.
 
+## Setting up telescope
+
+Normally, ripgrep will ignore files in `.gitignore` and hidden files but on this setup it won't, so telescope will find everything except things on your `.rgignore` and `.ignore` files, as well as the `.git` folder.
+
+Just make a `.rgignore` file per project, including things like `node_modules`, `libs`, etc, unless you want them with telescope.
+
+Meanwhile, nnn will still find everything.
+
 # Setting up neovim with Godot
 
 ## Setting up neovim to listen to Godot's LSP

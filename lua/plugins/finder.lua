@@ -1,7 +1,7 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.1',
+        tag = '0.1.4',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local map = vim.keymap
@@ -18,14 +18,10 @@ return {
                         find_command = {
                             'rg',
                             '--files',
-                            '--no-ignore-vcs',
                             '--hidden',
+                            '--no-ignore-vcs',
                             '--glob',
                             '!.git/**',
-                            '--glob',
-                            '!node_modules/**',
-                            '--glob',
-                            '!.godot/**',
                         },
                     },
                 },
