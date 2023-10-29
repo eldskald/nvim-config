@@ -96,6 +96,9 @@ return {
             },
         })
 
+        -- Configs for C/C++
+        require('lspconfig').clangd.setup({})
+
         lsp.setup()
 
         -- Autocompletion
