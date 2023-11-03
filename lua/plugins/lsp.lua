@@ -1,13 +1,8 @@
 return {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     dependencies = {
         { 'neovim/nvim-lspconfig' },
-        {
-            'williamboman/mason.nvim',
-            build = ':MasonUpdate',
-        },
-        { 'williamboman/mason-lspconfig.nvim' },
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-buffer' },
@@ -185,28 +180,6 @@ return {
                 warning = '!',
                 hint = '?',
                 information = 'i',
-            },
-        })
-
-        -- LSPs
-        require('mason').setup({
-            ui = {
-                icons = {
-                    package_installed = '>',
-                    package_pending = '>',
-                    package_uninstalled = '>',
-                },
-                keymaps = {
-                    toggle_package_expand = '<CR>',
-                    install_package = 'i',
-                    update_package = 'u',
-                    check_package_version = 'c',
-                    update_all_packages = 'U',
-                    check_outdated_packages = 'C',
-                    uninstall_package = 'X',
-                    cancel_installation = '<C-c>',
-                    apply_language_filter = '<C-f>',
-                },
             },
         })
     end,
