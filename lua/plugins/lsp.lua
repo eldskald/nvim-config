@@ -95,6 +95,12 @@ return {
         -- Configs for C/C++
         require('lspconfig').clangd.setup({})
 
+        -- Configs for HTML/CSS/JavaScript/TypeScript as well as tailwindcss
+        require('lspconfig').tsserver.setup({})
+        require('lspconfig').html.setup({})
+        require('lspconfig').cssls.setup({})
+        require('lspconfig').tailwindcss.setup({})
+
         lsp.setup()
 
         -- Autocompletion
