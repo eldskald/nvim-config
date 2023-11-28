@@ -101,6 +101,9 @@ return {
         require('lspconfig').cssls.setup({})
         require('lspconfig').tailwindcss.setup({})
 
+        -- Configs for GDScript
+        require('lspconfig').gdscript.setup({})
+
         lsp.setup()
 
         -- Autocompletion
