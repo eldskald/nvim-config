@@ -119,6 +119,14 @@ return {
                 ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select_opts),
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-i>'] = cmp.mapping.scroll_docs(4),
+                ['<Down>'] = cmp.mapping(function(fallback)
+                    cmp.close()
+                    fallback()
+                end, { 'i' }),
+                ['<Up>'] = cmp.mapping(function(fallback)
+                    cmp.close()
+                    fallback()
+                end, { 'i' }),
             },
             sources = {
                 { name = 'path' },
