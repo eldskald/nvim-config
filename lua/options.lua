@@ -1,5 +1,7 @@
 local o = vim.opt
 
+vim.g.mapleader = ' '
+
 -- Utils
 o.mouse = ''
 o.clipboard = 'unnamedplus'

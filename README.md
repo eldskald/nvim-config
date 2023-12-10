@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd('BufRead', {
   command = 'set ft=gdscript',
 })
 
--- on after/ftplugin/gdscript.lua:
+-- on lua/plugins/lsp.lua:
 require('lspconfig').gdscript.setup({})
 ```
 

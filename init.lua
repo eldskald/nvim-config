@@ -1,5 +1,5 @@
 require('options')
-require('mappings')
+-- require('mappings')
 
 local lazypath = vim.fn.stdpath('data') .. '/plugins.nvim'
 if not vim.loop.fs_stat(lazypath) then

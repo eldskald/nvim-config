@@ -5,6 +5,12 @@ return {
         opts = {},
     },
     {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require('colorizer').setup()
+        end,
+    },
+    {
         'akinsho/bufferline.nvim',
         version = '*',
         config = function()
@@ -23,6 +29,8 @@ return {
                     show_close_icon = false,
                 },
             })
+            vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>')
+            vim.keymap.set('n', '<S-Tab>', '<cmd>bprev<CR>')
         end,
     },
     {
