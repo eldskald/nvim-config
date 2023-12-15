@@ -95,6 +95,9 @@ return {
         -- Configs for C/C++
         require('lspconfig').clangd.setup({})
 
+        -- Configs for GLSL
+        require('lspconfig').glsl_analyzer.setup({})
+
         -- Configs for HTML/CSS/JavaScript/TypeScript as well as tailwindcss
         require('lspconfig').tsserver.setup({})
         require('lspconfig').html.setup({})
