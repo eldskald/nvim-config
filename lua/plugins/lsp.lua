@@ -14,7 +14,6 @@ return {
         { 'L3MON4D3/LuaSnip' },
         { 'rafamadriz/friendly-snippets' },
         -- Linting and formatting
-        -- { 'jose-elias-alvarez/null-ls.nvim' },
         { 'nvimtools/none-ls.nvim' },
         -- Diagnostics and quickfix
         { 'folke/trouble.nvim' },
